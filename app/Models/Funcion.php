@@ -10,4 +10,8 @@ class Funcion extends Model
     use HasFactory;
     
     protected $table = "funciones";
+
+    public function reservas(){
+        return $this->belongsTo(Reserva::class, 'funcion_id');
+    }
 }

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FuncionController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\SocioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +31,18 @@ Route::middleware([
     Route::get('/socios', function () {
         return view('socios');
     })->name('socios');
-    Route::get('/reservas', function () {
-        return view('reservas');
-    })->name('reservas');
+
+    Route::get('reservas',
+        [ReservaController::class, 'index']
+        )->name('reservas');
+
+    Route::get('funcion-reservas',
+        [FuncionController::class, 'getFuncionReservas']
+        )->name('funcion-reservas');
+
+    Route::get('socios/socio',
+        [SocioController::class, 'getSocio']
+        )->name('getSocio');
 });
 
 /**
