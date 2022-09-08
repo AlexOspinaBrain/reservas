@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('dashboard');
 });
 
 Route::middleware([
@@ -25,4 +26,17 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/socios', function () {
+        return view('socios');
+    })->name('socios');
+    Route::get('/reservas', function () {
+        return view('reservas');
+    })->name('reservas');
+});
+
+/**
+ * Manage inexistent routes
+ */
+Route::fallback(function () {
+    return redirect('dashboard');
 });
