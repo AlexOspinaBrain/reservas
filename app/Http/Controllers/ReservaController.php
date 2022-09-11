@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcion;
 use App\Models\Reserva;
+use App\Models\Socio;
 
 class ReservaController extends Controller
 {
@@ -66,5 +67,40 @@ class ReservaController extends Controller
             "sillas" => $sillas,
         ]);
 
+    }
+
+    public function getReservasSocio(){
+
+        request()->validate([
+            'id-socio'=>'required',
+        ]);
+        
+        $reservas=[];
+        
+        $idSocio = request()->input('id-socio');
+        $socio = Socio::where('identificacion','=', $idSocio)
+            ->first();
+
+        if ($socio) {
+            $reservas = Reserva::where('socio_id','=', $socio->id)
+                ->with('funcion') 
+                ->get();
+
+            $nombre = $socio->nombre . ' ' . $socio->apellido;
+        } else {
+            $nombre = "No existe el socio";
+        }
+        return response()->view('socioreserva', ["reservas" => $reservas, "nombre" => $nombre]);
+
+    }
+
+    public function delReservasSocio(){
+        $idReserva = request()->input('idReserva');
+        
+        $reserva = Reserva::find($idReserva);
+
+        $reserva->delete();
+
+        return view('socioreserva',["nombre"=>"Reserva Eliminada"]);
     }
 }

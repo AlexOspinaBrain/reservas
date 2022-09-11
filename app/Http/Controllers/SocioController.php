@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reserva;
 use App\Models\Socio;
 
 class SocioController extends Controller
@@ -15,4 +16,6 @@ class SocioController extends Controller
         return response()->json(["socio" => $socio]);
 
     }
+
+    
 }

@@ -27,7 +27,7 @@
                             <div id="apellido"></div>
                         </div>
                         <div>
-                        <select id="funciones" class="form-select" >
+                        <select id="funciones" name="funciones" class="form-select" >
                             <option value="seleccionar">Seleccionar Función</option>
                             @foreach ($funciones as $funcion)
                                 <option value="{{$funcion->id}}"> {{ $funcion->titulo }} - {{ $funcion->inicio }}</option> 
@@ -58,7 +58,7 @@
                         
                             @csrf   
                             
-                            <button type="submit" class="btn btn-outline-primary">Reservar</button>
+                            <button id="sendForm" type="button" class="btn btn-outline-primary">Reservar</button>
                             <input type="hidden" name="idreserva" id="idreserva">
                             <input type="hidden" name="idfuncion" id="idfuncion">
                             <br>
@@ -70,7 +70,7 @@
                                   </tr>
                                 </thead>
                                 <tbody id="bodyform"></tbody>
-                              </table>
+                            </table>
                             
                         </form>
                     </div>
@@ -80,3 +80,6 @@
         </div>
     </div>
 </x-app-layout>
+
+
+<script type="text/javascript" src="{{url('/js/reservas.js')}}"></script>

@@ -1,6 +1,19 @@
 /** Se agregan las funciones luego de tener ready el DOM */
 document.addEventListener("DOMContentLoaded", function() {
 
+    /**Valida la selección de socio y función */
+    document.getElementById('sendForm').addEventListener('click',()=>{
+        
+        const funcion = document.getElementById('idfuncion').value;
+        const socio = document.getElementById('idreserva').value;
+        if (!funcion || !socio){
+            alert('Debe seleccionar al menos el socio y la función.');
+            return;
+        }
+        
+        document.getElementById('reserva').submit();
+    }, false);
+
     /** Busqueda Socio */
     const identificacion = document.getElementById('id-socio');
     identificacion.addEventListener('change',()=>{
@@ -19,8 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 /** Si no genera una alerta */
                 identificacion.value = '';
+                /**Limpia identificacion socio */
                 document.getElementById('idreserva').value = null;
                 document.getElementById('nombre').textContent = 'Socio Inexistente';
+                /** limpia select de funciones */
+                document.getElementById('funciones').value = 'seleccionar';
+                document.querySelector('select[name="funciones"] option[value="seleccionar"]').selected = true;
             }
         })
         .catch(error =>  console.error('Error:', error))

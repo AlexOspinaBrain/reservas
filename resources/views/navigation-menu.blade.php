@@ -22,8 +22,13 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('reservas') }}" :active="request()->routeIs('reservas')">
-                        {{ __('Reservas') }}
+                    <x-jet-nav-link href="{{ route('reservar') }}" :active="request()->routeIs('reservar')">
+                        {{ __('Reservar') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('reservas-socio') }}" :active="request()->routeIs('reservas-socio')">
+                        {{ __('Reservas por Socio') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -157,8 +162,13 @@
             </x-jet-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('reservas') }}" :active="request()->routeIs('reservas')">
-                {{ __('Reservas') }}
+            <x-jet-responsive-nav-link href="{{ route('reservar') }}" :active="request()->routeIs('reservar')">
+                {{ __('Reservar') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('reservas-socio') }}" :active="request()->routeIs('reservas-socio')">
+                {{ __('Reservas por Socio') }}
             </x-jet-responsive-nav-link>
         </div>
         <!-- Responsive Settings Options -->

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     use HasFactory;
+
+    public function funcion(){
+        return $this->belongsTo(Funcion::class, 'funcion_id');
+    }
 }

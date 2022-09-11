@@ -28,27 +28,48 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
     /*Vista Manage Socios */
-    Route::get('/socios', function () {
-        return view('socios');
-    })->name('socios');
+    Route::get('/socios',
+        [SocioController::class, 'index']
+        )->name('socios');
+
     /**Consultar Socio */
     Route::get('/socios/socio/{idSocio}',
         [SocioController::class, 'getSocio']
         )->name('getSocio');
+
+
     /**Vista Reservas */
-    Route::get('/reservas',
+    Route::get('/reservar',
         [ReservaController::class, 'index']
-        )->name('reservas');
+        )->name('reservar');
+
     /**Endpoint Reservas de una funcion */
     Route::get('/funcion-reservas/{idFuncion}',
         [ReservaController::class, 'getFuncionReservas']
         )->name('funcion-reservas');
+
     /**Reservar Sillas */
     Route::post('/reservar',
         [ReservaController::class, 'setReservas']
         )->name('reservar');
+
+
+    /*Vista Manage Reservas por socio */
+    Route::get('/reservas/socio', function () {
+        return view('socioreserva');
+        })->name('reservas-socio');
+
+    /**Reservas de socio */
+    Route::get('/reserva/socio',
+        [ReservaController::class, 'getReservasSocio']
+        )->name('reserva-socio');
     
+    /**Reservas de socio */
+    Route::post('/reserva/socio/delete',
+        [ReservaController::class, 'delReservasSocio']
+        )->name('reserva-socio-delete');
 });
 
 /**
