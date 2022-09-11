@@ -6,13 +6,11 @@ use App\Models\Socio;
 
 class SocioController extends Controller
 {
-    public function getSocio(){
+    public function getSocio($idSocio = ''){
 
-        $idSocio = request()->input('identificacion') ?? '';
-
-        $socio = Socio::where('identificacion','=',$idSocio)
+        $socio = Socio::where('identificacion','=', $idSocio)
         ->where('estado','=',true)
-        ->get();
+        ->first();
 
         return response()->json(["socio" => $socio]);
 
