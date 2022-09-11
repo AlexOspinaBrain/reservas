@@ -7,6 +7,12 @@ use App\Models\Socio;
 
 class SocioController extends Controller
 {
+ 
+    /**
+     * Renderiza la vista de los socios
+     *
+     * @return object view
+     */
     public function index(){
 
         $socios = Socio::all();
@@ -15,6 +21,13 @@ class SocioController extends Controller
 
     }
 
+    /**
+     * Obtiene un socio 
+     *
+     * @param string $idSocio
+     * 
+     * @return object json
+     */
     public function getSocio($idSocio = ''){
 
         $socio = Socio::where('identificacion','=', $idSocio)
@@ -24,6 +37,14 @@ class SocioController extends Controller
 
     }
 
+    /**
+     * Guarda la información del socio 
+     * 
+     * Ya sea uno nuevo o una actualización
+     *
+     * @param mixed request
+     * @return object redirect
+     */
     public function storeSocio(){
 
         request()->validate([
@@ -45,6 +66,12 @@ class SocioController extends Controller
 
     }
 
+    /**
+     * Elimina un socio
+     *
+     * @param string id del socio
+     * @return object view
+     */
     public function delSocio(){
         
         $id = request()->input('id');

@@ -8,6 +8,14 @@ use App\Models\Socio;
 
 class ReservaController extends Controller
 {
+
+    /**
+     * Renderiza la vista de las reservas con las funciones disponibles
+     * 
+     * 
+     *
+     * @return object view
+     */
     public function index(){
 
         $funciones = Funcion::all();
@@ -16,6 +24,12 @@ class ReservaController extends Controller
 
     }
 
+    /**
+     * Recupera las reservas de una funcion especifica
+     *
+     * @param string $idFuncion
+     * @return object json
+     */
     public function getFuncionReservas($idFuncion = ''){
         
         $reservas = Reserva::where('funcion_id','=', $idFuncion)
@@ -28,6 +42,14 @@ class ReservaController extends Controller
 
     }
 
+    /**
+     * Realiza la reserva de sillas
+     * 
+     * Recupera en un arreglo las sillas y crea las reservas según su socio y función
+     *
+     * @param mixed request
+     * @return object view
+     */
     public function setReservas(){
         
         request()->validate([
@@ -69,6 +91,12 @@ class ReservaController extends Controller
 
     }
 
+    /**
+     * Recupera las reservas de un socio
+     *
+     * @param string id-socio
+     * @return object view
+     */
     public function getReservasSocio(){
 
         request()->validate([
@@ -94,6 +122,12 @@ class ReservaController extends Controller
 
     }
 
+    /**
+     * Elimina una reserva
+     *
+     * @param string idReserva
+     * @return object view
+     */
     public function delReservasSocio(){
         $idReserva = request()->input('idReserva');
         
