@@ -14,6 +14,16 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
+RUN apt-get install htop nano ncdu build-essential chrpath libssl-dev libxft-dev pkg-config glib2.0-dev libexpat1-dev gobject-introspection python-gi-dev apt-transport-https libgirepository1.0-dev libtiff5-dev libgsf-1-dev fail2ban -y
+
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt-get install --yes nodejs
+RUN node -v
+RUN npm -v
+RUN npm i -g nodemon
+RUN nodemon -v
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
