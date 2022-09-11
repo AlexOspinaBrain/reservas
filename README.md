@@ -1,3 +1,59 @@
+<h1>Sistema de reservas para un teatro</h1>
+    
+</h2>Es una aplicación desarrollada en Laravel 9, necesitaras PHP 8.0 y MySql 8.0, pero no hay lio, todo lo vamos a configurar con docker</h2>
+
+<h3>Instalación :</h3>
+
+<ul>
+<li>Clonar el repositorio</li>
+
+<li>Ahora puede hacer una copia del archivo .env.example con el nombre .env y en la seccion DB configurar el acceso así:</li>
+
+<code>
+DB_CONNECTION=mysql
+</code><br>
+<code>
+DB_HOST=db
+</code><br>
+<code>
+DB_PORT=3306
+</code><br>
+<code>
+DB_DATABASE=reservas
+</code><br>
+<code>
+DB_USERNAME=lo_que_quieras
+</code><br>
+<code>
+DB_PASSWORD=lo_que_quieras_pass
+</code><br>
+<br>
+<li>Ahora debe ejecutar los siguientes comandos en la raiz de la aplicación: </li>
+
+<ul>
+<li><code>docker-compose build app</code></li>
+<li><code>docker-compose up -d</code></li>
+<li><code>docker-compose exec app composer install</code></li>
+<li><code>docker-compose exec app php artisan key:generate</code></li>
+<li><code>docker-compose exec app php artisan migrate --seed</code></li>
+<li><code>docker-compose exec app npm install && npm run build</code></li>
+
+</ul>
+    
+<h3>Listo, la base de datos ya contendra información de prueba pre fabricada</h3>
+<p>Puede ingresar con el usuario prueba@gmail.com password 1234</p>
+
+<br>
+<h3>Puede ingresar por, http://localhost:8005</h3>
+
+
+    <br>
+
+<h3>Dudas con laravel? revise lo siguiente :</h3>
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
