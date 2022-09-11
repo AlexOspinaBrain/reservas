@@ -11,32 +11,33 @@
               <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                 
                 <div class="mt-8 text-2xl">
-                    Crear Nuevo.
+                    Crear / Editar
                 </div>
                 <br>
               <div style="width: 300px;">
-                <form action="{{ route('reserva-socio') }}" method="get">
+                <form action="{{ route('socios-store') }}" method="post">
                     @csrf
                 <div class="input-group input-group-sm mb-3" >
                     <span class="input-group-text" id="inputGroup-sizing-sm">Identificación</span>
-                    <input name="identificacion" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+                    <input name="identificacion" id="identificacion"  type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
                     
                 </div>
                 <div class="input-group input-group-sm mb-3" >
                     <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
-                    <input name="nombre" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+                    <input name="nombre" id="nombre"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
                     
                 </div>
                 <div class="input-group input-group-sm mb-3" >
                     <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
-                    <input name="apellido" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+                    <input name="apellido" id="apellido"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
                     
                 </div>
+                <input type="hidden" name="id" id="idSocio">
                 <button type="submit" class="btn btn-outline-primary">Enviar</button>
                 </form>
                 <br>
                 <div class="alert alert-success" role="alert">
-                    <div id="nombre">{{ $msg ?? ''}}</div>
+                    <div id="msg">{{ $msg ?? ''}}</div>
                     
                 </div>
               </div>
@@ -60,16 +61,19 @@
                                     <td>{{$socio->apellido}}</td>
                                     <td>{{$socio->created_at}}</td>
                                     <td>
-                                        <form action="{{ route('reserva-socio-delete') }}" method="get">
+                                        <div class="row">
+                                        <div class="col">
+                                           <button type="button" onclick="preparaSocioEditar(this)" value="socio-{{$socio->id}}-{{$socio->identificacion}}-{{$socio->nombre}}-{{$socio->apellido}}" class="btn btn-outline-primary btn-sm float-center">Editar</button>
+                                        
+                                        </div>
+                                        <div class="col">
+                                        <form action="{{route('socios-delete')}}" method="post">
                                             @csrf
-                                            <input type="hidden" name="idSocio" value="{{$socio->id}}">
-                                            <button type="submit" class="btn btn-outline-danger float-center">Editar</button>
+                                            <input type="hidden" name="id" value="{{$socio->id}}">
+                                            <button type="submit" class="btn btn-outline-danger  btn-sm float-center">Eliminar</button>
                                         </form>
-                                        <form action="{{ route('reserva-socio-delete') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="idSocio" value="{{$socio->id}}">
-                                            <button type="submit" class="btn btn-outline-danger float-center">Eliminar</button>
-                                        </form>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -82,3 +86,4 @@
         </div>
     </div>
 </x-app-layout>
+<script type="text/javascript" src="{{url('/js/socios.js')}}"></script>

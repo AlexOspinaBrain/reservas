@@ -39,13 +39,22 @@ Route::middleware([
         [SocioController::class, 'getSocio']
         )->name('getSocio');
 
+    /**Delete Socio */
+    Route::post('/socios/delete',
+        [SocioController::class, 'delSocio']
+        )->name('socios-delete');
+
+    /**Crea o actualiza Socio */
+    Route::post('/socios/store',
+        [SocioController::class, 'storeSocio']
+        )->name('socios-store');
 
     /**Vista Reservas */
     Route::get('/reservar',
         [ReservaController::class, 'index']
         )->name('reservar');
 
-    /**Endpoint Reservas de una funcion */
+    /** Reservas de una funcion */
     Route::get('/funcion-reservas/{idFuncion}',
         [ReservaController::class, 'getFuncionReservas']
         )->name('funcion-reservas');
@@ -66,7 +75,7 @@ Route::middleware([
         [ReservaController::class, 'getReservasSocio']
         )->name('reserva-socio');
     
-    /**Reservas de socio */
+    /**Elimina Reservas de socio */
     Route::post('/reserva/socio/delete',
         [ReservaController::class, 'delReservasSocio']
         )->name('reserva-socio-delete');

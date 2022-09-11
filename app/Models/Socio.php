@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Socio extends Model
 {
     use HasFactory;
-
+    protected $guarded=[];
 }
