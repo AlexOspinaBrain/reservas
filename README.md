@@ -10,6 +10,10 @@
 <li>Ahora puede hacer una copia del archivo .env.example con el nombre .env y en la seccion DB configurar el acceso así:</li>
 
 <code>
+APP_URL=http://localhost:8005
+</code><br>
+
+<code>
 DB_CONNECTION=mysql
 </code><br>
 <code>
