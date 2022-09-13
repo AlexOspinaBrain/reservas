@@ -40,7 +40,7 @@ DB_PASSWORD=lo_que_quieras_pass
 <li><code>docker-compose exec app composer install</code></li>
 <li><code>docker-compose exec app php artisan key:generate</code></li>
 <li><code>docker-compose exec app php artisan migrate --seed</code></li>
-<li><code>docker-compose exec app npm install && npm run build</code></li>
+<li><code>docker-compose exec app bash -c 'npm install && npm run build'</code></li>
 
 </ul>
     
